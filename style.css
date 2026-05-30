@@ -365,3 +365,108 @@ input[type="range"]::-webkit-slider-thumb{
 .active:hover{
     color: rgb(0, 255, 0);
 }
+/* Mobile Responsive */
+
+@media (max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .left-half,
+    .right-half {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+
+    .input-box {
+        width: 100%;
+    }
+
+    .main {
+        flex-direction: column;
+    }
+
+    .main-left-part {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .main-right-part {
+        width: 100%;
+    }
+
+    .songs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .music-card {
+        width: 100%;
+    }
+
+    .music-card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .player-bar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .now-bar {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .music-controller {
+        width: 100%;
+    }
+
+    #progressBar {
+        width: 100%;
+    }
+
+    .right-half-p1,
+    .right-half-p2 {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .songs {
+        grid-template-columns: 1fr;
+    }
+
+    .music-card {
+        max-width: 100%;
+    }
+
+    .logo,
+    .home-icon {
+        font-size: 22px;
+    }
+
+    .login-btn {
+        width: 100%;
+    }
+
+    .music-controller .player {
+        gap: 15px;
+    }
+}u
