@@ -1,13 +1,13 @@
 * {
     padding: 0;
     margin: 0;
-    box-sizing: border-box; /* Isse padding aur border element ki width se baahar nahi jaate */
+    box-sizing: border-box; 
 }
 
 body {
     background-color: black;
     font-family: "Montserrat", sans-serif;
-    overflow-x: hidden; /* Horizontal scrollbar ko rokne ke liye */
+    overflow-x: hidden; 
 }
 
 /* NavBar */
@@ -250,7 +250,7 @@ nav {
     display: flex;
     gap: 1rem;
     overflow-x: auto;
-    scrollbar-width: thin; /* Firefox ke liye scrollbar patla karne ko */
+    scrollbar-width: thin; 
 }
 
 .music-card {
@@ -414,16 +414,16 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 /* ==========================================================
-   MOBILE & TABLET RESPONSIVE QUERIES
+   MOBILE & TABLET RESPONSIVE QUERIES (FINAL FIX)
    ========================================================== */
 
 /* Tablets (992px se neeche) */
 @media (max-width: 992px) {
     .search-bar {
-        width: 20rem; /* Search bar ka size thoda chhota kiya */
+        width: 20rem;
     }
     .main-left-part {
-        width: 35%; /* Sidebar ko thoda space diya */
+        width: 35%;
     }
     .main-right-part {
         width: 65%;
@@ -433,72 +433,123 @@ input[type="range"]::-webkit-slider-thumb {
 /* Mobile Devices (768px se neeche) */
 @media (max-width: 768px) {
     nav {
-        height: auto;
-        flex-direction: column;
-        padding: 1rem;
-        gap: 1rem;
+        height: auto !important;
+        flex-direction: column !important;
+        padding: 15px !important;
+        gap: 15px !important;
     }
 
     .left-half, .right-half {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .search-bar {
-        width: 100%;
-        margin-top: 0.5rem;
-    }
-
-    .right-half-p1 {
-        border-right: none;
-        padding: 0;
-    }
-
-    /* Main Section: Sidebar ko chhupaya Spotify ki tarah aur right section ko full width di */
-    .main {
-        flex-direction: column;
-        padding: 0 0.5rem;
-    }
-
-    .main-left-part {
-        display: none; /* Mobile par sidebar hide kiya space bachane ke liye */
-    }
-
-    .main-right-part {
-        width: 100%;
-        height: calc(100vh - 15rem); /* Bottom player aur top nav bar ke hisab se height adjustable */
-    }
-
-    /* Songs Layout: Grid se cards acche se fit honge */
-    .songs {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        width: 100% !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
         gap: 10px;
     }
 
-    .music-card {
-        min-width: unset;
-        max-width: unset;
-        width: 100%;
+    .search-bar {
+        width: 100% !important;
+        margin: 5px 0 !important;
     }
 
-    /* Bottom Player Bar Adjustment */
+    .right-half-p1 {
+        border-right: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Main Container layout change */
+    .main {
+        display: flex !important;
+        flex-direction: column !important; 
+        height: auto !important;
+        min-height: unset !important;
+        padding: 0 10px !important;
+        gap: 20px !important;
+    }
+
+    
+    .main-right-part {
+        width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
+        order: 1 !important; 
+    }
+
+    
+    .main-left-part {
+        width: 100% !important;
+        height: auto !important;
+        padding: 15px !important;
+        display: block !important;
+        order: 2 !important; 
+        padding-bottom: 8rem !important; /* Player bar se content na chupe */
+    }
+
+    
+    .box {
+        height: auto !important; 
+        padding: 15px !important;
+        margin-bottom: 15px !important;
+    }
+
+    .box button {
+        margin: 10px 0 0 0 !important;
+    }
+
+    /* Grid Layout for Songs */
+    .songs {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+        overflow-x: hidden !important;
+    }
+
+    .music-card {
+        min-width: unset !important;
+        max-width: unset !important;
+        width: 100% !important;
+        background-color: #181818;
+    }
+
+    .music-card img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .music-play-btn {
+        display: none !important; 
+    }
+
+    /* Player Bar Adjustment */
     .player-bar {
-        flex-direction: row;
-        padding: 0.5rem;
-        min-height: 4.5rem;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 4.5rem !important;
+        background-color: #000 !important;
+        flex-direction: row !important;
+        padding: 10px !important;
+        z-index: 9999;
+        border-top: 1px solid #222;
     }
 
     .now-bar {
-        width: 50%;
+        width: 45% !important;
+    }
+
+    .player-bar img {
+        height: 3rem !important;
+        width: 3rem !important;
     }
 
     .music-controller {
-        width: 50%;
+        width: 55% !important;
     }
 
     #progressBar {
-        display: none; /* Mobile par chhota progress bar space consume karta hai, click handle karne me dikkat hoti hai */
+        display: none !important;
     }
 
     .player-btns {
@@ -509,22 +560,24 @@ input[type="range"]::-webkit-slider-thumb {
 /* Chhote Mobile Devices (480px se neeche) */
 @media (max-width: 480px) {
     .songs {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns mobile ke liye badhiya standard hain */
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
     }
 
     .logo {
-        font-size: 2rem;
+        font-size: 2rem !important;
     }
 
     .home-icon {
-        font-size: 1.4rem;
+        font-size: 1.4rem !important;
     }
 
     .img-title-info {
-        font-size: 0.8rem;
+        font-size: 0.8rem !important;
+        margin-left: 0.5rem !important;
     }
 
     .img-des-info {
-        display: none; /* Bohot chhote screen par artist name hide kiya taaki song name dikhe */
+        display: none !important;
     }
-    }
+}
