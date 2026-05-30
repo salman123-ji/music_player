@@ -1,11 +1,13 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box; /* Isse padding aur border element ki width se baahar nahi jaate */
 }
 
 body {
     background-color: black;
     font-family: "Montserrat", sans-serif;
+    overflow-x: hidden; /* Horizontal scrollbar ko rokne ke liye */
 }
 
 /* NavBar */
@@ -15,6 +17,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     height: 4rem;
+    padding: 0 1rem;
 }
 
 .left-half {
@@ -25,7 +28,7 @@ nav {
 
 .logo {
     font-size: 2.5rem;
-    margin: 1rem;
+    margin-right: 1rem;
 }
 
 .home-icon {
@@ -36,6 +39,7 @@ nav {
     border-radius: 50%;
     margin: 0 1rem;
     transition: 0.2s;
+    cursor: pointer;
 }
 
 .home-icon:hover {
@@ -50,6 +54,7 @@ nav {
     height: 3rem;
     width: 30rem;
     border-radius: 20rem;
+    padding: 0 1rem;
 }
 
 .search-bar:hover {
@@ -60,8 +65,7 @@ nav {
 .search-icon {
     font-size: 1.5rem;
     color: rgb(179, 179, 179);
-    padding: 0 0.7rem;
-
+    margin-right: 0.5rem;
 }
 
 .search-bar:hover .search-icon {
@@ -69,19 +73,21 @@ nav {
 }
 
 .input-box {
-    width: 78%;
+    flex: 1;
     height: 60%;
-    background-color: #27272700;
+    background-color: transparent;
     border: none;
     border-right: 1px solid rgb(179, 179, 179);
     color: white;
     font-size: 1.2rem;
+    outline: none;
 }
 
 .browse {
     font-size: 1.3rem;
     margin-left: 0.6rem;
     transition: 0.2s;
+    cursor: pointer;
 }
 
 .browse:hover {
@@ -91,8 +97,8 @@ nav {
 .right-half {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     color: white;
-    width: 48%;
 }
 
 .right-half-p1 {
@@ -132,6 +138,7 @@ nav {
     font-weight: 700;
     margin: 1rem;
     transition: 0.2s;
+    cursor: pointer;
 }
 
 .login-btn:hover {
@@ -141,26 +148,27 @@ nav {
 /* main-left-part */
 .main {
     background-color: black;
-    min-width: 98vw;
-    height: 78vh;
+    width: 100%;
+    min-height: 75vh;
     margin-top: 2vh;
     display: flex;
-    justify-content: space-around;
+    gap: 1rem;
+    padding: 0 1rem;
     color: white;
 }
 
 .main-left-part {
-    width: 27%;
-    height: 100%;
+    width: 25%;
     background-color: #121212;
     border-radius: 10px;
+    padding: 1rem;
 }
 
 .library {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1rem 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .library p {
@@ -168,17 +176,17 @@ nav {
 }
 
 .library div {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: rgb(179, 179, 179);
     background-color: #2f2f2f;
-    padding: 8px;
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 2.5rem;
+    width: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 30rem;
+    border-radius: 50%;
     transition: 0.2s;
+    cursor: pointer;
 }
 
 .library div:hover {
@@ -187,27 +195,26 @@ nav {
 }
 
 .box-container {
-    margin-top: 1rem;
-    height: 100%;
+    height: calc(100% - 4rem);
+    overflow-y: auto;
 }
 
 .box {
     background-color: #1f1f1f;
-    height: 22%;
-    width: 98%;
+    padding: 1.2rem;
     border-radius: 10px;
-    margin: 1rem 0;
+    margin-bottom: 1rem;
 }
 
 .box h4 {
     font-weight: 600;
-    font: 0.9rem;
-    padding: 1.3rem 0 0.5rem 1rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
 }
 
 .box p {
     font-size: 0.8rem;
-    padding-left: 1rem;
+    margin-bottom: 1rem;
 }
 
 .box button {
@@ -215,8 +222,9 @@ nav {
     color: black;
     font-weight: 600;
     padding: 0.6rem 0.8rem;
-    margin: 1rem 0 0 1rem;
+    border: none;
     border-radius: 25rem;
+    cursor: pointer;
 }
 
 .box button:hover {
@@ -226,183 +234,242 @@ nav {
 
 /* Main: right part */
 .main-right-part {
-    width: 72%;
-    height: 100%;
+    width: 75%;
     background-color: #121212;
     border-radius: 10px;
-    overflow: auto;
+    overflow-y: auto;
+    padding: 1rem;
 }
 
-.music-card img {
-    height: 10rem;
-    width: 10rem;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 5px;
+.music-section {
+    margin-bottom: 2rem;
+}
+
+.songs {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scrollbar-width: thin; /* Firefox ke liye scrollbar patla karne ko */
 }
 
 .music-card {
-    width: 10rem;
+    min-width: 11.5rem;
+    max-width: 11.5rem;
     padding: 0.7rem;
     border-radius: 5px;
     position: relative;
+    background-color: #181818;
+    transition: background-color 0.3s;
 }
 
 .music-card:hover {
     background-color: #222;
 }
 
-.music-section {
-    margin: 2rem 0 2rem 2rem;
-}
-
-.songs {
-    margin: 2rem 0;
-    display: flex;
-    overflow-x: auto;
+.music-card img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
 .img-title {
-    margin: 0.7rem 0;
+    margin: 0.7rem 0 0.3rem 0;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .img-description {
     font-size: 0.8rem;
     color: rgb(199, 199, 199);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .music-play-btn {
     color: rgb(32, 234, 32);
     font-size: 2.7rem;
     position: absolute;
+    right: 1rem;
+    bottom: 4.5rem;
     background-color: rgb(0, 0, 0);
     width: 2.7rem;
+    height: 2.7rem;
     display: flex;
-    border-radius: 20rem;
-    transform: translate(110px, -40px);
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
     opacity: 0;
-    transition: 0.3s;
+    transform: translateY(10px);
+    transition: 0.3s ease;
 }
 
 .music-card:hover .music-play-btn {
     opacity: 1;
-    transform: translate(110px, -50px);
+    transform: translateY(0);
 }
 
-/* Player */
-.player-bar{
+/* Player Bar */
+.player-bar {
     width: 100%;
-    height: 5rem;
-    margin-top: 0.2rem;
+    min-height: 5rem;
+    background-color: black;
+    padding: 0 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-.music-controller{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.player{
-    display: flex;
-    align-items: center;
-}
-.player-btns{
-    font-size: 1.1rem;
-    margin: 0.4rem 1rem;
-    color: rgb(190, 190, 190);
-    cursor: pointer;
-}
-.player-btns:hover{
-    transform: scale(1.02);
-    color: rgb(232, 232, 232);
-}
-#play{
-    font-size: 2.3rem;
-    color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
 
-#progressBar{
-    appearance: none;
-    width: 600px;
-    height: 3px;
-    background-color: #333;
+.now-bar {
+    color: white;
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+
+.player-bar img {
+    height: 3.5rem;
+    width: 3.5rem;
     border-radius: 5px;
-    cursor: pointer;
-}
-input[type="range"]::-webkit-slider-thumb{
-    appearance: none;
-    width: 10px;
-    height: 10px;
-    background-color: white;
-    border-radius: 10px;
+    object-fit: cover;
 }
 
-.now-bar{
-    color: white;
-    display: flex;
-    align-items: center;
-}
-.player-bar img{
-    height: 4rem;
-    width: 4rem;
-    border-radius: 10px;
-    padding: 0.3rem;
-}
-.img-title-info{
+.img-title-info {
     font-size: 0.9rem;
     margin-left: 1rem;
+    font-weight: 600;
 }
-.img-des-info{
-    font: 0.8rem;
+
+.img-des-info {
+    font-size: 0.8rem;
     color: rgb(192, 192, 192);
     margin-left: 1rem;
 }
 
-.active{
-    color: rgb(0, 255, 0);
+.music-controller {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
 }
-.active:hover{
-    color: rgb(0, 255, 0);
-}
-/* Mobile Responsive */
 
+.player {
+    display: flex;
+    align-items: center;
+}
+
+.player-btns {
+    font-size: 1.1rem;
+    margin: 0 1rem;
+    color: rgb(190, 190, 190);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.player-btns:hover {
+    transform: scale(1.05);
+    color: rgb(232, 232, 232);
+}
+
+#play {
+    font-size: 2.3rem;
+    color: white;
+}
+
+#progressBar {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    max-width: 600px;
+    height: 4px;
+    background-color: #333;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.active {
+    color: rgb(0, 255, 0);
+}
+
+.active:hover {
+    color: rgb(0, 255, 0);
+}
+
+/* ==========================================================
+   MOBILE & TABLET RESPONSIVE QUERIES
+   ========================================================== */
+
+/* Tablets (992px se neeche) */
+@media (max-width: 992px) {
+    .search-bar {
+        width: 20rem; /* Search bar ka size thoda chhota kiya */
+    }
+    .main-left-part {
+        width: 35%; /* Sidebar ko thoda space diya */
+    }
+    .main-right-part {
+        width: 65%;
+    }
+}
+
+/* Mobile Devices (768px se neeche) */
 @media (max-width: 768px) {
-
     nav {
+        height: auto;
         flex-direction: column;
-        gap: 10px;
-        padding: 10px;
+        padding: 1rem;
+        gap: 1rem;
     }
 
-    .left-half,
-    .right-half {
+    .left-half, .right-half {
         width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
     .search-bar {
         width: 100%;
+        margin-top: 0.5rem;
     }
 
-    .input-box {
-        width: 100%;
+    .right-half-p1 {
+        border-right: none;
+        padding: 0;
     }
 
+    /* Main Section: Sidebar ko chhupaya Spotify ki tarah aur right section ko full width di */
     .main {
         flex-direction: column;
+        padding: 0 0.5rem;
     }
 
     .main-left-part {
-        width: 100%;
-        margin-bottom: 10px;
+        display: none; /* Mobile par sidebar hide kiya space bachane ke liye */
     }
 
     .main-right-part {
         width: 100%;
+        height: calc(100vh - 15rem); /* Bottom player aur top nav bar ke hisab se height adjustable */
     }
 
+    /* Songs Layout: Grid se cards acche se fit honge */
     .songs {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -410,63 +477,54 @@ input[type="range"]::-webkit-slider-thumb{
     }
 
     .music-card {
+        min-width: unset;
+        max-width: unset;
         width: 100%;
     }
 
-    .music-card img {
-        width: 100%;
-        height: auto;
-    }
-
+    /* Bottom Player Bar Adjustment */
     .player-bar {
-        flex-direction: column;
-        height: auto;
-        padding: 10px;
-        gap: 10px;
+        flex-direction: row;
+        padding: 0.5rem;
+        min-height: 4.5rem;
     }
 
     .now-bar {
-        width: 100%;
-        justify-content: center;
+        width: 50%;
     }
 
     .music-controller {
-        width: 100%;
+        width: 50%;
     }
 
     #progressBar {
-        width: 100%;
+        display: none; /* Mobile par chhota progress bar space consume karta hai, click handle karne me dikkat hoti hai */
     }
 
-    .right-half-p1,
-    .right-half-p2 {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
+    .player-btns {
+        margin: 0 0.5rem;
     }
 }
 
-
+/* Chhote Mobile Devices (480px se neeche) */
 @media (max-width: 480px) {
-
     .songs {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns mobile ke liye badhiya standard hain */
     }
 
-    .music-card {
-        max-width: 100%;
+    .logo {
+        font-size: 2rem;
     }
 
-    .logo,
     .home-icon {
-        font-size: 22px;
+        font-size: 1.4rem;
     }
 
-    .login-btn {
-        width: 100%;
+    .img-title-info {
+        font-size: 0.8rem;
     }
 
-    .music-controller .player {
-        gap: 15px;
+    .img-des-info {
+        display: none; /* Bohot chhote screen par artist name hide kiya taaki song name dikhe */
     }
-}u
+    }
